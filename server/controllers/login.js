@@ -1,5 +1,7 @@
 const bcrypt = require('bcrypt');
 const Usuario = require('../model/usuario');
+const jwt = require('jsonwebtoken');
+
 
 const login = async (req, res) => {
     const { correo, contrasena } = req.body;
@@ -11,7 +13,14 @@ const login = async (req, res) => {
                 if (error) res.json({ error });
                 else if (resultado) {
                     const { id, nombre } = usuario;
-                    return res.json({ mensaje: 'Inicio de sesión exitoso', usuario: { id, nombre }, resultado: resultado });
+
+                    const data = { id, nombre };
+
+                    const token = jwt.sign(data, "secreto", {
+                        expiresIn: 60 * 60 * 24,
+                    });
+
+                    return res.json({ mensaje: 'Inicio de sesión exitoso', usuario: { id, nombre, token }, resultado: resultado });
                 } else {
                     return res.json({ mensaje: 'Contraseña icorrecta', resultado: resultado });
                 }

@@ -35,7 +35,9 @@ const Login = () => {
                     setTimeout(() => {
                         setMensaje("");
                         setCargando(false);
-                        if (data.resultado) { navigate(`/welcome/${data.usuario.id}`) };
+                        console.log(data);
+                        localStorage.setItem('token', data?.usuario.token);
+                        if (data.resultado) { navigate(`/welcome`) };
                         console.log(data);
                     }, 3000);
                 })

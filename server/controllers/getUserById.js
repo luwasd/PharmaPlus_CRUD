@@ -1,7 +1,7 @@
 const Usuario = require('../model/usuario');
 
 const getUserById = async (req, res) => {
-    const { userId } = req.params;
+    const userId = req.user.id;
 
     if (userId.length !== 24) {
         return res.json({ mensaje: 'Contraseña icorrecta' });

@@ -1,15 +1,16 @@
 const express = require('express');
 const cors = require('cors');
 const db = require('./database/db');
-
 const controllers = require('./controllers');
+const verificarToken = require('./middlewares/verificarToken');
+
 
 const app = express();
 
 app.use(cors());
 app.use(express.json());
 
-app.get('/user/:userId', controllers.getUserById);
+app.get('/user', verificarToken, controllers.getUserById);
 app.post('/register', controllers.register);
 app.post('/login', controllers.login);
 
