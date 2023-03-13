@@ -1,6 +1,8 @@
 import axios from 'axios';
 import React, { useEffect, useState } from 'react'
 import { useNavigate } from 'react-router-dom'
+import Cart from '../components/Cart';
+import Product from '../components/Product';
 import style from '../layout/styles.module.scss'
 
 const Welcome = () => {
@@ -28,14 +30,19 @@ const Welcome = () => {
 
 
     return (
-        <div className={style.welcome}>
-            <h3>{nombre ? `Bienvenido ${nombre}!!` : 'No se ha podido ingresar.'}</h3>
-            <h2>{nombre ? `Has ingresado correctamente!` : 'Te estamos viendo....'}</h2>
-            <div className={style.botones}>
-                <button onClick={() => navigate('/login')}>Login</button>
-                <button onClick={() => navigate('/')}>Register</button>
+        <>
+
+            <div className={style.welcome}>
+                <Cart />
+                <Product />
+                {/* <h3>{nombre ? `Bienvenido ${nombre}!!` : 'No se ha podido ingresar.'}</h3>
+                <h2>{nombre ? `Has ingresado correctamente!` : 'Te estamos viendo....'}</h2>
+                <div className={style.botones}>
+                    <button onClick={() => navigate('/login')}>Login</button>
+                    <button onClick={() => navigate('/')}>Register</button>
+                </div> */}
             </div>
-        </div>
+        </>
     )
 }
 

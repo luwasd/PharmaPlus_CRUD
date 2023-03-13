@@ -21,6 +21,11 @@ const UsuarioSchema = new Schema({
         required: [true, "La contraseña es obligatoria"],
         minlength: [8, "La contraseña debe tener al menos 8 caracteres"]
     },
+    compras: {
+        type: Array,
+        default: [],
+        required: [true, "Las compras son obligatorias"],
+    },
 });
 
 module.exports = model('Usuario', UsuarioSchema);
