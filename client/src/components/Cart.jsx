@@ -7,14 +7,18 @@ const Cart = () => {
 
   const [cartOpen, setCartOpen] = useState(false)
   const [cartLength, setCartLength] = useState(0)
+  const { cartItem, usuario } = useOutletContext();
+  const { correo } = usuario;
+  // const [userCart, setUserCart] = useState()
 
-  const { cartItem } = useOutletContext();
+  const userCart = cartItem.filter((item) => item.correo === correo);
+
 
   useEffect(() => {
-    setCartLength(cartItem.reduce((acc, item)=> acc + item.cantidad, 0));
+    setCartLength(userCart.reduce((acc, item) => acc + item.cantidad, 0));
   }, [cartItem]);
 
-  const total = cartItem.reduce((acc, item) => acc + item.precio * item.cantidad, 0);
+  const total = userCart.reduce((acc, item) => acc + item.precio * item.cantidad, 0);
 
   const toggleCart = () => {
     setCartOpen(!cartOpen);
@@ -70,7 +74,7 @@ const Cart = () => {
             <p className={styles.cartVacio}>Tu carrito esta vacio</p>
           ) : (
             <div className={styles.cartProducts}>
-              {cartItem.map((item, i) => (
+              {userCart.map((item, i) => (
                 <ItemCart key={i} item={item} />
               ))}
             </div>

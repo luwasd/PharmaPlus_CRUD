@@ -1,9 +1,9 @@
 import React from 'react'
 import { useOutletContext } from 'react-router-dom';
-import styles from './styles.module.scss';
+import styles from '../pages/styles.module.scss';
 
 
-const ItemCart = ({ item }) => {
+const ProductosCart = ({ item }) => {
     // console.log(item);
     const { _id, nombre, imagen, precio, cantidad } = item;
     const { removeFromCart, deleteFromCart } = useOutletContext();
@@ -27,4 +27,4 @@ const ItemCart = ({ item }) => {
     )
 }
 
-export default ItemCart;
+export default ProductosCart;

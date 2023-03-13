@@ -1,13 +1,17 @@
 import axios from 'axios';
 import React, { useEffect, useState } from 'react';
 import { useNavigate, useOutletContext } from 'react-router-dom';
-import Cart from '../components/Cart';
-import Product from '../components/Product';
+import ProductosCart from '../components/ProductosCart';
 import styles from './styles.module.scss';
 
-const Welcome = () => {
+const CartPage = () => {
 
     const { usuario, setUsuario, cartItem, getProductos, getProductosCarrito } = useOutletContext();
+    const { correo } = usuario;
+
+    const userCart = cartItem.filter((item) => item.correo === correo);
+
+    const total = userCart.reduce((acc, item) => acc + item.precio * item.cantidad, 0);
 
     const navigate = useNavigate();
 
@@ -31,17 +35,16 @@ const Welcome = () => {
     return (
         <>
             <div className={styles.welcome}>
-                <Cart />
-                <Product />
-                {/* <h3>{usuario.nombre ? `Bienvenido ${usuario.nombre}!!` : 'No se ha podido ingresar.'}</h3>
-                <h2>{usuario.nombre ? `Has ingresado correctamente!` : 'Te estamos viendo....'}</h2>
-                <div className={style.botones}>
-                    <button onClick={() => navigate('/login')}>Login</button>
-                    <button onClick={() => navigate('/')}>Register</button>
-                </div> */}
+                <h2>Tu carrito</h2>
+                <div className={styles.cartProducts}>
+                    {userCart.map((item, i) => (
+                        <ProductosCart key={i} item={item} />
+                    ))}
+                </div>
+                <h2 className={styles.total}>Total: ${total.toLocaleString()}</h2>
             </div>
         </>
     )
 }
 
-export default Welcome
+export default CartPage

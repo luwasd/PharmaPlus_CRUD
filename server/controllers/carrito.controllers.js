@@ -4,6 +4,10 @@ const Producto = require('../model/producto');
 const getCarrito = async (req, res) => {
     const productosCarrito = await Carrito.find();
 
+    // const { correo } = req.body;
+
+    // const carritoFiltrado = await Carrito.find({ correo: correo });
+
     if (productosCarrito) {
         res.json({ productosCarrito });
     } else {
@@ -12,27 +16,34 @@ const getCarrito = async (req, res) => {
 };
 
 const addCarrito = async (req, res) => {
-    const { nombre, imagen, precio } = req.body;
+    const { nombre, imagen, precio, correo } = req.body;
+
+    const camposCompletos = nombre && imagen && precio && correo; //validar que los campos no esten vacios
 
     const esProducto = await Producto.findOne({ nombre: nombre });//buscar si existe el producto en la base de datos
 
-    const camposCompletos = nombre && imagen && precio; //validar que los campos no esten vacios
+    // const estaEnCarrito = await Carrito.findOne({ nombre: nombre });//buscar si el producto ya esta en el carrito
 
-    const estaEnCarrito = await Carrito.findOne({ nombre: nombre });//buscar si el producto ya esta en el carrito
+    const carritoFiltrado = await Carrito.find({ correo: correo }); //filtrar carrito del usuario
 
+    const estaEnCarrito = carritoFiltrado.map((producto) => producto.correo === correo && producto.nombre === nombre).includes(true);
+    const id = carritoFiltrado.filter((producto) => producto.correo === correo && producto.nombre === nombre).map((producto) => producto._id);
     if (camposCompletos) {
         if (esProducto) {
             if (estaEnCarrito) {
-                res.json({ mensaje: 'El producto ya esta en el carrito' });
+                await Carrito.findByIdAndUpdate(id, { $inc: { cantidad: 1 } }, { new: true })
+                .then((producto) => res.json({ mensaje: 'Se ha actualizado el producto', producto }));
+                // res.json({ mensaje: 'El producto ya esta en el carrito' });
             } else {
                 const nuevoProductoEnCarrito = new Carrito({
                     nombre,
                     imagen,
                     precio,
+                    correo,
                     cantidad: 1,
                 });
 
-                await Producto.updateOne({ nombre: nombre }, { enCarrito: true }); //actualizar el estado del producto en la base de datos
+                // await Producto.updateOne({ nombre: nombre }, { enCarrito: true }); //actualizar el estado del producto en la base de datos
 
                 await nuevoProductoEnCarrito.save();
                 res.json({ mensaje: 'Producto agregado al carrito', nuevoProductoEnCarrito });
@@ -52,7 +63,7 @@ const updateCarrito = async (req, res) => {
 
     const estaEnCarrito = await Carrito.findById(productoId); //buscar si el producto esta en el carrito
 
-    const { _id } = await Producto.findOne({ nombre: estaEnCarrito.nombre, });//buscar el id del producto en la base de datos
+    // const { _id } = await Producto.findOne({ nombre: estaEnCarrito.nombre, });//buscar el id del producto en la base de datos
 
     if (!query) {
         res.status(404).json({ mensaje: 'Se debe enviar una query' });
@@ -69,15 +80,16 @@ const updateCarrito = async (req, res) => {
                 .then((producto) =>
                     res.json({ mensaje: 'Se ha actualizado el producto', producto })
                 );
-        } else {
-            //actualizar el estado del producto en la base de datos
-            await Producto.findByIdAndUpdate(_id, { enCarrito: false }, { new: true });
-            //actualizar el producto en la base de datos buscando por nombre
-            await Carrito.findByIdAndDelete(productoId)
-                .then((producto) =>
-                    res.json({ mensaje: 'Se ha eliminado el producto del carrito', producto })
-                );
         }
+        // else {
+        //     //actualizar el estado del producto en la base de datos
+        //     // await Producto.findByIdAndUpdate(_id, { enCarrito: false }, { new: true });
+        //     //actualizar el producto en la base de datos buscando por nombre
+        //     await Carrito.findByIdAndDelete(productoId)
+        //         .then((producto) =>
+        //             res.json({ mensaje: 'Se ha eliminado el producto del carrito', producto })
+        //         );
+        // }
     } else {
         res.status(400).json({ mensaje: 'El producto no esta en el carrito' });
     }

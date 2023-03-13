@@ -1,13 +1,17 @@
 import React, { useEffect, useState } from 'react';
-import { Outlet } from 'react-router-dom';
+import { Outlet, useLocation } from 'react-router-dom';
 import Menu from './Menu';
 import styles from './styles.module.scss';
 import axios from 'axios';
 
 
 const Layout = () => {
+    const [usuario, setUsuario] = useState({});
     const [cartItem, setCartItem] = useState([]);
     const [productos, setProductos] = useState([]);
+
+    const location = useLocation();
+    const showMenu = location.pathname !== '/login' && location.pathname !== '/';
 
     const getProductos = async () => {
         await axios
@@ -16,8 +20,11 @@ const Layout = () => {
     };
 
     const getProductosCarrito = async () => {
+
+        const { correo } = usuario;
+
         await axios
-            .get('http://localhost:4000/productos-carrito')
+            .get('http://localhost:4000/productos-carrito', { correo })
             .then(({ data }) => setCartItem(data.productosCarrito))
             .catch((err) => console.log(err));
     };
@@ -30,13 +37,16 @@ const Layout = () => {
     const addToCart = async (producto) => {
         const { id, nombre, precio, imagen } = producto;
 
-        await axios.post("http://localhost:4000/productos-carrito", { nombre, precio, imagen })
+        const { correo } = usuario;
+
+        await axios.post("http://localhost:4000/productos-carrito", { nombre, precio, imagen, correo })
 
         getProductos();
         getProductosCarrito();
     }
 
     const removeFromCart = async (id, query, cantidad) => {
+
         if (query === 'quitar' && cantidad === 1) {
             await axios
                 .delete(`http://localhost:4000/productos-carrito/${id}`)
@@ -66,9 +76,9 @@ const Layout = () => {
 
     return (
         <>
-            <Menu />
+            {showMenu && <Menu usuario={usuario} />}
             <div className={styles.container}>
-                <Outlet context={{ cartItem, productos, addToCart, removeFromCart, deleteFromCart }} />
+                <Outlet context={{ usuario, setUsuario, cartItem, productos, addToCart, removeFromCart, deleteFromCart, getProductos, getProductosCarrito }} />
             </div>
         </>
     )

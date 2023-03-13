@@ -1,14 +1,26 @@
 import React from 'react'
 import { NavLink } from 'react-router-dom'
+import styles from './styles.module.scss'
 
 
-const Menu = () => {
+const Menu = (props) => {
+
+    const cerrarSesion = () => {
+        localStorage.removeItem('token');
+    }
+
+    const { usuario } = props;
+
     return (
-        <nav className="navbar navbar-expand-lg bg-body-tertiary">
-            <div className="container-fluid">
-                <NavLink className="navbar-brand" to="/">Register</NavLink>
-                <NavLink className="navbar-brand" to="/login">Login</NavLink>
-                <NavLink className="navbar-brand" to="/welcome">pagina</NavLink>
+        <nav>
+            <div className={styles.navBar}>
+                <h1>{`Bienvenido/a ${usuario.nombre}`}</h1>
+                <div className={styles.navButtons}>
+                    <NavLink to="/welcome">Inicio</NavLink>
+                    <NavLink to="/perfil">Perfil</NavLink>
+                    <NavLink to="/cart">Completar Compra!</NavLink>
+                    <NavLink to="/login" onClick={cerrarSesion}>Cerrar Sesión</NavLink>
+                </div>
             </div>
         </nav>
     )

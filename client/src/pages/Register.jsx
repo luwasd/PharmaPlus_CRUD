@@ -1,6 +1,6 @@
 import React, { useState } from 'react'
 import { useNavigate } from 'react-router-dom'
-import style from '../layout/styles.module.scss'
+import styles from './styles.module.scss'
 import axios from 'axios'
 
 const Register = () => {
@@ -39,7 +39,7 @@ const Register = () => {
                         setMensaje("");
                         setCargando(false);
                         navigate('/login');
-                    }, 3000);
+                    }, 2000);
                 })
                 .catch((error) => {
                     console.error(error)
@@ -47,7 +47,7 @@ const Register = () => {
                     setTimeout(() => {
                         setMensaje("");
                         setCargando(false);
-                    }, 3000);
+                    }, 2000);
                 });
         }
     };
@@ -55,24 +55,24 @@ const Register = () => {
     const navigate = useNavigate()
     return (
         <>
-            <div className={style.formContainer}>
+            <div className={styles.formContainer}>
                 <h3>Bienvenido a la pagina</h3>
                 <h2>De Registro</h2>
                 <form onSubmit={handleSubmit}>
                     <div>
-                        <div className={style.inputBox}>
+                        <div className={styles.inputBox}>
                             <label htmlFor="nombre">Nombre :</label>
                             <input onChange={handleChange} value={nombre} required minLength={2} type="text" id='nombre' name='nombre' placeholder='Escriba su Nombre...' autoComplete='off' />
                         </div>
                     </div>
                     <div>
-                        <div className={style.inputBox}>
+                        <div className={styles.inputBox}>
                             <label htmlFor="correo">Correo :</label>
                             <input onChange={handleChange} value={correo} required type="email" id='correo' name='correo' placeholder='Escriba su Correo...' autoComplete='off' />
                         </div>
                     </div>
                     <div>
-                        <div className={style.inputBox}>
+                        <div className={styles.inputBox}>
                             <label htmlFor="contrasena">Contraseña :</label>
                             <input onChange={handleChange} value={contrasena} required minLength={5} type="password" id='contrasena' name='contrasena' placeholder='Escriba su Contraseña...' autoComplete='off' />
                         </div>
@@ -81,7 +81,7 @@ const Register = () => {
                     <p>¿Ya tienes una cuenta? <span onClick={() => navigate('/login')}>Inicia Sesion!</span></p>
                 </form>
             </div>
-            {mensaje && <div className={style.mensajeForm}>{mensaje}</div>}
+            {mensaje && <div className={styles.mensajeForm}>{mensaje}</div>}
         </>
     )
 }
