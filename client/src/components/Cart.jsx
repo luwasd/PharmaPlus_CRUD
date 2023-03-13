@@ -11,7 +11,7 @@ const Cart = () => {
   const { cartItem } = useOutletContext();
 
   useEffect(() => {
-    setCartLength(cartItem.length);
+    setCartLength(cartItem.reduce((acc, item)=> acc + item.cantidad, 0));
   }, [cartItem]);
 
   const total = cartItem.reduce((acc, item) => acc + item.precio * item.cantidad, 0);
@@ -84,4 +84,4 @@ const Cart = () => {
   )
 }
 
-export default Cart
+export default Cart;

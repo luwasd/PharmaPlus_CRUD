@@ -86,11 +86,11 @@ const updateCarrito = async (req, res) => {
 const deleteCarrito = async (req, res) => {
     const { productoId } = req.params;
 
-    const enCarrito = await Carrito.findById(productoId); //buscar si el producto esta en el carrito
+    const estaEnCarrito = await Carrito.findById(productoId); //buscar si el producto esta en el carrito
 
-    const { _id } = await Producto.findOne({ nombre: enCarrito.nombre });//buscar el id del producto en la base de datos
+    const { _id } = await Producto.findOne({ nombre: estaEnCarrito.nombre });//buscar el id del producto en la base de datos
 
-    if (enCarrito) {
+    if (estaEnCarrito) {
         await Carrito.findByIdAndDelete(productoId);
 
         await Producto.findByIdAndUpdate(_id, { enCarrito: false }, { new: true })

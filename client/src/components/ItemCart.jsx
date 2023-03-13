@@ -3,9 +3,9 @@ import { useOutletContext } from 'react-router-dom';
 import styles from './styles.module.scss';
 
 const ItemCart = ({ item }) => {
-
-    const { id, nombre, precio, cantidad, imagen } = item;
-    const { addToCart, removeFromCart, deleteFromCart } = useOutletContext();
+    console.log(item);
+    const { _id, nombre, imagen, precio, cantidad } = item;
+    const { removeFromCart, deleteFromCart } = useOutletContext();
 
     return (
         <div className={styles.itemCart}>
@@ -13,9 +13,9 @@ const ItemCart = ({ item }) => {
                 <img src={imagen} alt={nombre}></img>
                 <p>{nombre}</p>
                 <p className={styles.cantidad}>{cantidad}</p>
-                <button onClick={() => addToCart(item)}>Aumentar</button>
-                <button onClick={() => removeFromCart(item)}>Disminuir</button>
-                <button onClick={() => deleteFromCart(item)}>Eliminar</button>
+                <button onClick={() => removeFromCart(_id, "agregar", cantidad)}>Aumentar</button>
+                <button onClick={() => removeFromCart(_id, "quitar", cantidad)}>Disminuir</button>
+                <button onClick={() => deleteFromCart(_id)}>Eliminar</button>
             </div>
             <div className={styles.item}>
                 <p style={{ fontWeight: 'bold' }}>Precio: ${precio.toLocaleString()}</p>
@@ -25,4 +25,4 @@ const ItemCart = ({ item }) => {
     )
 }
 
-export default ItemCart
+export default ItemCart;

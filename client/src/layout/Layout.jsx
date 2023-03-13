@@ -6,65 +6,69 @@ import axios from 'axios';
 
 
 const Layout = () => {
-    const [cartItem, setCartItem] = useState(() => {
-        const localData = localStorage.getItem('cart');
-        return localData ? JSON.parse(localData) : [];
-    })
-    
+    const [cartItem, setCartItem] = useState([]);
+    const [productos, setProductos] = useState([]);
+
+    const getProductos = async () => {
+        await axios
+            .get('http://localhost:4000/productos')
+            .then(({ data }) => setProductos(data.productos))
+    };
+
+    const getProductosCarrito = async () => {
+        await axios
+            .get('http://localhost:4000/productos-carrito')
+            .then(({ data }) => setCartItem(data.productosCarrito))
+            .catch((err) => console.log(err));
+    };
+
     useEffect(() => {
-        localStorage.setItem('cart', JSON.stringify(cartItem));
-        console.log(cartItem);
+        getProductos();
+        getProductosCarrito();
     }, [cartItem]);
 
-    const addToCart = (product) => {
+    const addToCart = async (producto) => {
+        const { id, nombre, precio, imagen } = producto;
 
-        const inCart = cartItem.find((item) => item.id === product.id); //verifica si el producto ya esta en el carrito
+        await axios.post("http://localhost:4000/productos-carrito", { nombre, precio, imagen })
 
-        if (inCart) { //si el producto ya esta en el carrito, se suma 1 a la cantidad
-            setCartItem(
-                cartItem.map((item) => {
-                    if (item.id === product.id) {
-                        return { ...item, cantidad: item.cantidad + 1 };
-                    } else {
-                        return item;
-                    }
-                })
-            );
-        } else { //si el producto no esta en el carrito, se agrega al carrito
-            setCartItem([...cartItem, { ...product, cantidad: 1 }]);
-        }
+        getProductos();
+        getProductosCarrito();
     }
 
-    const removeFromCart = (product) => {
-        const inCart = cartItem.find((item) => item.id === product.id);
-
-        if (inCart.cantidad === 1) {
-            setCartItem(cartItem.filter((item) => item.id !== product.id));
+    const removeFromCart = async (id, query, cantidad) => {
+        if (query === 'quitar' && cantidad === 1) {
+            await axios
+                .delete(`http://localhost:4000/productos-carrito/${id}`)
+                .then(({ data }) => console.log(data));
         } else {
-            setCartItem(cartItem.map((item) => {
-                if (item.id === product.id) {
-                    return { ...item, cantidad: item.cantidad - 1 };
-                } else {
-                    return item;
-                }
-            })
-            );
+            await axios
+                .put(`http://localhost:4000/productos-carrito/${id}?query=${query}`)
+                .then(({ data }) => console.log(data));
         }
+        getProductos();
+        getProductosCarrito();
+
     }
 
-    const deleteFromCart = (product) => {
-        setCartItem(cartItem.filter((item) => item.id !== product.id));
+    const deleteFromCart = async (id) => {
+        await axios
+            .delete(`http://localhost:4000/productos-carrito/${id}`)
+            .then(({ data }) => console.log(data));
+
+        getProductos();
+        getProductosCarrito();
     };
 
-    const clearCart = () => {
-        setCartItem([]);
-    };
+    // const clearCart = () => {
+    //     setCartItem([]);
+    // };
 
     return (
         <>
             <Menu />
             <div className={styles.container}>
-                <Outlet context={{ cartItem, addToCart, removeFromCart, deleteFromCart, clearCart }} />
+                <Outlet context={{ cartItem, productos, addToCart, removeFromCart, deleteFromCart }} />
             </div>
         </>
     )

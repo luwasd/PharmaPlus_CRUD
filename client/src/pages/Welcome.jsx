@@ -35,12 +35,12 @@ const Welcome = () => {
             <div className={style.welcome}>
                 <Cart />
                 <Product />
-                {/* <h3>{nombre ? `Bienvenido ${nombre}!!` : 'No se ha podido ingresar.'}</h3>
+                <h3>{nombre ? `Bienvenido ${nombre}!!` : 'No se ha podido ingresar.'}</h3>
                 <h2>{nombre ? `Has ingresado correctamente!` : 'Te estamos viendo....'}</h2>
                 <div className={style.botones}>
                     <button onClick={() => navigate('/login')}>Login</button>
                     <button onClick={() => navigate('/')}>Register</button>
-                </div> */}
+                </div>
             </div>
         </>
     )
