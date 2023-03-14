@@ -4,7 +4,7 @@ import styles from './styles.module.scss'
 import axios from 'axios'
 
 const Register = () => {
-
+    localStorage.removeItem('token');
     const [inputs, setInputs] = useState({
         nombre: "",
         correo: "",
@@ -56,8 +56,8 @@ const Register = () => {
     return (
         <>
             <div className={styles.formContainer}>
-                <h3>Bienvenido a la pagina</h3>
-                <h2>De Registro</h2>
+                <h3>Bienvenido a la Pagina de Registro de</h3>
+                <h2>Pharma Plus+!</h2>
                 <form onSubmit={handleSubmit}>
                     <div>
                         <div className={styles.inputBox}>

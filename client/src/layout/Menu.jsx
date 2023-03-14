@@ -14,7 +14,7 @@ const Menu = (props) => {
     return (
         <nav>
             <div className={styles.navBar}>
-                <h1>{`Bienvenido/a ${usuario.nombre}`}</h1>
+                <h1>{`Bienvenido/a a Pharma Plus+ ${usuario.nombre}!`}</h1>
                 <div className={styles.navButtons}>
                     <NavLink to="/welcome">Inicio</NavLink>
                     <NavLink to="/perfil">Perfil</NavLink>
@@ -26,4 +26,4 @@ const Menu = (props) => {
     )
 }
 
-export default Menu
+export default Menu;

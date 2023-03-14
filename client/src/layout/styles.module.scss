@@ -25,9 +25,14 @@ nav {
         justify-content: space-between;
         border-radius: 10px;
         background-color: #fff;
-        padding: 0 10px;
+        padding: 0 15px;
         box-shadow: 0 0 10px 0 rgba(0, 0, 0, 0.1);
         color: #12664F;
+    }
+    h1{
+        font-size: 30px;
+        font-weight: bold;
+        margin: 0;
     }
 
     .navButtons {
@@ -35,7 +40,7 @@ nav {
         display: flex;
         flex-direction: row;
         justify-content: space-around;
-        align-items: center;
+        align-items: center;        
 
         a {
             padding: 5px 10px;

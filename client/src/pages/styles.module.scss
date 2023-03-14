@@ -120,6 +120,33 @@
         width: 80%;
     }
 
+    .cartFinalizar {
+        width: 100%;
+        display: flex;
+        flex-direction: row;
+        justify-content: space-between;
+        align-items: center;
+        
+        button {
+            border: none;
+            border-radius: 10px;
+            border: #12664F 2px double;
+            padding: 5px 10px;
+            cursor: pointer;
+            font-size: 30px;
+            font-weight: bold;
+            background-color: #fff;
+            color: #12664F;
+        }
+        button:hover {
+            background-color: #12664F75;
+        }
+        button:active {
+            background-color: #12664F;
+            color: #fff;
+        }
+    }
+
     .itemCart {
         margin: 20px;
         border-radius: 30px;
