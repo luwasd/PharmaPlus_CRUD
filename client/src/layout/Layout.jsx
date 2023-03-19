@@ -9,9 +9,11 @@ const Layout = () => {
     const [usuario, setUsuario] = useState({});
     const [cartItem, setCartItem] = useState([]);
     const [productos, setProductos] = useState([]);
+    const [admin, setAdmin] = useState(false);
 
     const location = useLocation();
     const showMenu = location.pathname !== '/login' && location.pathname !== '/';
+    const token = localStorage.getItem('token');
 
     const getProductos = async () => {
         await axios
@@ -70,15 +72,20 @@ const Layout = () => {
         getProductosCarrito();
     };
 
-    // const clearCart = () => {
-    //     setCartItem([]);
-    // };
+    const validarAdmin = (usuario) => {
+        const { rol } = usuario;
+        if (rol === 'admin') {
+            setAdmin(true);
+        } else {
+            setAdmin(false);
+        }
+    };
 
     return (
         <>
-            {showMenu && <Menu usuario={usuario} />}
+            {showMenu && <Menu usuario={usuario} admin={admin}/>}
             <div className={styles.container}>
-                <Outlet context={{ usuario, setUsuario, cartItem, productos, addToCart, removeFromCart, deleteFromCart, getProductos, getProductosCarrito }} />
+                <Outlet context={{ admin, validarAdmin, usuario, setUsuario, cartItem, productos, addToCart, removeFromCart, deleteFromCart, getProductos, getProductosCarrito }} />
             </div>
         </>
     )

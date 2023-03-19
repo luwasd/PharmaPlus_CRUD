@@ -37,7 +37,13 @@ const Login = () => {
                         setCargando(false);
                         console.log(data);
                         localStorage.setItem('token', data?.usuario.token);
-                        if (data.resultado) { navigate(`/welcome`) };
+                        if (data.resultado) {
+                            if (data.usuario.rol === 'admin') {
+                                navigate(`/admin`)
+                            } else {
+                                navigate(`/welcome`)
+                            }
+                        };
                         console.log(data);
                     }, 2000);
                 })

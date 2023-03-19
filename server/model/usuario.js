@@ -1,4 +1,5 @@
 const { model, Schema } = require('mongoose');
+const bcrypt = require('bcrypt');
 
 const UsuarioSchema = new Schema({
     nombre: {
@@ -26,6 +27,31 @@ const UsuarioSchema = new Schema({
         default: [],
         required: [true, "Las compras son obligatorias"],
     },
+    rol: {
+        type: String,
+        default: "cliente",
+        required: [true, "El rol es obligatorio"],
+    },
+}, { timestamps: true, versionKey: false });
+
+UsuarioSchema.virtual('confirmarContrasena')
+    .get(() => this._confirmarContrasena)
+    .set((value) => this._confirmarContrasena = value);
+
+UsuarioSchema.pre('validate', function (next) {
+    if ((this.isModified('contrasena') || this.isModified('confirmarContrasena'))
+        && this.contrasena !== this.confirmarContrasena) {
+        this.invalidate('confirmarContrasena', 'Las contraseñas deben ser iguales');
+    }
+    next();
+});
+
+UsuarioSchema.pre('save', function (next) {
+    bcrypt.hash(this.contrasena, 10)
+        .then((hash) => {
+            this.contrasena = hash;
+            next();
+        });
 });
 
 module.exports = model('Usuario', UsuarioSchema);

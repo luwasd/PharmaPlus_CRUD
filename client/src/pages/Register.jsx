@@ -8,13 +8,14 @@ const Register = () => {
     const [inputs, setInputs] = useState({
         nombre: "",
         correo: "",
-        contrasena: ""
+        contrasena: "",
+        confirmarContrasena: ""
     });
 
     const [mensaje, setMensaje] = useState();
     const [cargando, setCargando] = useState(false);
 
-    const { nombre, correo, contrasena } = inputs;
+    const { nombre, correo, contrasena, confirmarContrasena } = inputs;
 
     const handleChange = (e) => {
         setInputs({ ...inputs, [e.target.name]: e.target.value });
@@ -22,11 +23,20 @@ const Register = () => {
 
     const handleSubmit = async (e) => {
         e.preventDefault();
-        if (nombre !== "" && correo !== "" && contrasena !== "") {
+        if (nombre !== "" && correo !== "" && contrasena !== "" && confirmarContrasena !== "") {
+            // if (contrasena !== confirmarContrasena) {
+            //     setMensaje("Las contraseñas deben ser iguales"); //
+            //     setTimeout(() => {
+            //         setMensaje("");
+            //         setCargando(false);
+            //     }, 2000);
+            //     return;
+            // }
             const Data = {
                 nombre,
                 correo,
-                contrasena
+                contrasena,
+                confirmarContrasena
             };
             setCargando(true);
             await axios
@@ -34,7 +44,7 @@ const Register = () => {
                 .then(({ data }) => {
                     setMensaje(data.mensaje);
                     console.log(mensaje);
-                    setInputs({ nombre: "", correo: "", contrasena: "" });
+                    setInputs({ nombre: "", correo: "", contrasena: "", confirmarContrasena: "" });
                     setTimeout(() => {
                         setMensaje("");
                         setCargando(false);
@@ -42,8 +52,9 @@ const Register = () => {
                     }, 2000);
                 })
                 .catch((error) => {
-                    console.error(error)
-                    setMensaje("Error al registrar usuario");
+                    console.log(error)
+                    console.log(error.response.data.errors);
+                    setMensaje(error.response.data.errors.confirmarContrasena.message);
                     setTimeout(() => {
                         setMensaje("");
                         setCargando(false);
@@ -75,6 +86,12 @@ const Register = () => {
                         <div className={styles.inputBox}>
                             <label htmlFor="contrasena">Contraseña :</label>
                             <input onChange={handleChange} value={contrasena} required minLength={5} type="password" id='contrasena' name='contrasena' placeholder='Escriba su Contraseña...' autoComplete='off' />
+                        </div>
+                    </div>
+                    <div>
+                        <div className={styles.inputBox}>
+                            <label htmlFor="confirmarContrasena">Confirmar contraseña :</label>
+                            <input onChange={handleChange} value={confirmarContrasena} required minLength={5} type="password" id='confirmarContrasena' name='confirmarContrasena' placeholder='Favor confirme su Contraseña...' autoComplete='off' />
                         </div>
                     </div>
                     <button type='submit'>{cargando ? "Cargando..." : "Registrarme"}</button>

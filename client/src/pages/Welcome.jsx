@@ -7,7 +7,7 @@ import styles from './styles.module.scss';
 
 const Welcome = () => {
 
-    const { usuario, setUsuario, cartItem, getProductos, getProductosCarrito } = useOutletContext();
+    const { validarAdmin, usuario, setUsuario, cartItem, getProductos, getProductosCarrito } = useOutletContext();
 
     const navigate = useNavigate();
 
@@ -23,7 +23,10 @@ const Welcome = () => {
                         acceso: token, // token
                     },
                 })
-                .then(({ data }) => setUsuario(data))
+                .then(({ data }) => {
+                    setUsuario(data)
+                    validarAdmin(data)
+                })
                 .catch((error) => console.error(error));
         }
     }, [token])
@@ -33,15 +36,9 @@ const Welcome = () => {
             <div className={styles.welcome}>
                 <Cart />
                 <Product />
-                {/* <h3>{usuario.nombre ? `Bienvenido ${usuario.nombre}!!` : 'No se ha podido ingresar.'}</h3>
-                <h2>{usuario.nombre ? `Has ingresado correctamente!` : 'Te estamos viendo....'}</h2>
-                <div className={style.botones}>
-                    <button onClick={() => navigate('/login')}>Login</button>
-                    <button onClick={() => navigate('/')}>Register</button>
-                </div> */}
             </div>
         </>
     )
 }
 
-export default Welcome
+export default Welcome;

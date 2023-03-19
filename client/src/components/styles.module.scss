@@ -133,6 +133,7 @@
     border-radius: 20px;
 }
 
+//para ItemCart
 .itemCart {
     margin: 20px;
     border-radius: 30px;
@@ -174,6 +175,139 @@
         padding: 5px 10px;
         cursor: pointer;
         font-size: 14px;
+        background-color: #12664F;
+        color: #fff;
+    }
+
+    button:hover {
+        background-color: #2E8C73;
+    }
+}
+
+//para ProductosCart
+.itemCartExpanded {
+    margin: 20px;
+    border-radius: 30px;
+    border: solid 2px #12664F;
+    padding: 10px;
+    color: #12664F;
+    display: flex;
+    flex-direction: column;
+    background-color: #fff;
+
+    .item {
+        display: flex;
+        flex-direction: row;
+        justify-content: space-between;
+        align-items: center;
+
+        .cantidad {
+            height: 35px;
+            width: 35px;
+            border-radius: 50%;
+            background-color: #12664F;
+            font-size: 15px;
+            font-weight: bold;
+            color: #fff;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        p {
+            margin: 0;
+            font-size: 20px;
+        }
+    }
+
+    img {
+        width: 150px;
+    }
+
+    button {
+        border: none;
+        border-radius: 10px;
+        padding: 5px 10px;
+        cursor: pointer;
+        font-size: 20px;
+        background-color: #12664F;
+        color: #fff;
+    }
+
+    button:hover {
+        background-color: #2E8C73;
+    }
+}
+
+
+//para ProductosAdmin
+.cajaItem {
+    width: 100%;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: flex-start;
+    padding: 30px;
+    gap: 10px;
+    border-radius: 10px;
+    box-shadow: 0 0 10px 0 rgba(0, 0, 0, 0.2);
+    font-weight: bold;
+    text-align: center;
+
+
+    .datosProducto {
+        display: flex;
+        flex-direction: column;
+        width: 80%;
+        gap: 20px;
+        justify-content: center;
+        align-items: center;
+
+        .superior {
+            width: 100%;
+            display: flex;
+            flex-direction: row;
+            justify-content: space-around;
+            align-items: center;
+            gap: 20px;
+            .stock{
+                display: flex;
+                flex-direction: row;
+                justify-content: space-around;
+                align-items: center;
+                gap: 20px;
+            }
+        }
+    }
+
+    .cantidad {
+        height: 35px;
+        width: 35px;
+        border-radius: 50%;
+        background-color: #12664F;
+        font-size: 15px;
+        font-weight: bold;
+        color: #fff;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+    }
+
+    p {
+        margin: 0;
+        font-size: 20px;
+    }
+
+    img {
+        width: 150px;
+    }
+
+    button {
+        border: none;
+        border-radius: 10px;
+        padding: 5px 10px;
+        cursor: pointer;
+        font-size: 20px;
         background-color: #12664F;
         color: #fff;
     }
