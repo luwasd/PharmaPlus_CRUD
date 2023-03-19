@@ -9,12 +9,22 @@ const Menu = (props) => {
         localStorage.removeItem('token');
     }
 
-    const { usuario } = props;
+    const { usuario, admin } = props;
 
     return (
         <nav>
-            <div className={styles.navBar}>
-                <h1>{`Bienvenido/a a Pharma Plus+ ${usuario.nombre}!`}</h1>
+            {admin ?
+            < div className={styles.navBar}>
+                <h1>{`Perfil Administrador de:  ${usuario.nombre}!`}</h1>
+                <div className={styles.navButtons}>
+                    <NavLink to="/admin">Productos</NavLink>
+                    <NavLink to="/perfil">Usuarios</NavLink>
+                    {/* <NavLink to="/cart">Completar Compra!</NavLink> */}
+                    <NavLink to="/login" onClick={cerrarSesion}>Cerrar Sesión</NavLink>
+                </div>
+            </div>
+            :<div className={styles.navBar}>
+                <h1>{`Bienvenido/a a Pharma Plus+  ${usuario.nombre}!`}</h1>
                 <div className={styles.navButtons}>
                     <NavLink to="/welcome">Inicio</NavLink>
                     <NavLink to="/perfil">Perfil</NavLink>
@@ -22,7 +32,8 @@ const Menu = (props) => {
                     <NavLink to="/login" onClick={cerrarSesion}>Cerrar Sesión</NavLink>
                 </div>
             </div>
-        </nav>
+        }
+        </nav >
     )
 }
 

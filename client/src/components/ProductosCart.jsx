@@ -10,7 +10,7 @@ const ProductosCart = ({ item }) => {
 
 
     return (
-        <div className={styles.itemCart}>
+        <div className={styles.itemCartExpanded}>
             <div className={styles.item}>
                 <img src={imagen} alt={nombre}></img>
                 <p>{nombre}</p>
