@@ -1,10 +1,13 @@
 .container {
-    width: 100vw;
-    height: auto;
-    padding: 10px;
+    height: 800px;
+    width: 100%;
+    background-image:  url("https://img.freepik.com/free-photo/flat-lay-medical-desk-composition-with-copy-space_23-2148502943.jpg?w=2000");
+    background-size: cover;
+    background-position: center top;
     display: flex;
-    align-items: center;
+    flex-direction: row;
     justify-content: center;
+    align-items: center;
     background-color: #ececec;
 }
 

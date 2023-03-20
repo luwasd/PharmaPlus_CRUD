@@ -1,24 +1,25 @@
-import React, { useEffect, useState } from 'react'
-import { useOutletContext } from 'react-router-dom';
-import ItemCart from './ItemCart';
-import styles from './styles.module.scss'
+import React, { useEffect, useState } from "react";
+import { useOutletContext } from "react-router-dom";
+import ItemCart from "./ItemCart";
+import styles from "./styles.module.scss";
 
 const Cart = () => {
-
-  const [cartOpen, setCartOpen] = useState(false)
-  const [cartLength, setCartLength] = useState(0)
+  const [cartOpen, setCartOpen] = useState(false);
+  const [cartLength, setCartLength] = useState(0);
   const { cartItem, usuario } = useOutletContext();
   const { correo } = usuario;
   // const [userCart, setUserCart] = useState()
 
   const userCart = cartItem.filter((item) => item.correo === correo);
 
-
   useEffect(() => {
     setCartLength(userCart.reduce((acc, item) => acc + item.cantidad, 0));
   }, [cartItem]);
 
-  const total = userCart.reduce((acc, item) => acc + item.precio * item.cantidad, 0);
+  const total = userCart.reduce(
+    (acc, item) => acc + item.precio * item.cantidad,
+    0
+  );
 
   const toggleCart = () => {
     setCartOpen(!cartOpen);
@@ -63,7 +64,7 @@ const Cart = () => {
             </svg>
           )}
         </div>
-        {!cartOpen && (<div className={styles.cartLength}>{cartLength}</div>)}
+        {!cartOpen && <div className={styles.cartLength}>{cartLength}</div>}
       </div>
 
       {cartItem && cartOpen && (
@@ -71,7 +72,7 @@ const Cart = () => {
           <h2>Tu carrito</h2>
 
           {cartItem.length === 0 ? (
-            <p className={styles.cartVacio}>Tu carrito esta vacio</p>
+            <p className={styles.cartVacio}>Tu carrito esta vacío</p>
           ) : (
             <div className={styles.cartProducts}>
               {userCart.map((item, i) => (
@@ -83,9 +84,8 @@ const Cart = () => {
           <h2 className={styles.total}>Total: ${total.toLocaleString()}</h2>
         </div>
       )}
-
     </div>
-  )
-}
+  );
+};
 
 export default Cart;

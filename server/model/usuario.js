@@ -4,33 +4,33 @@ const bcrypt = require('bcrypt');
 const UsuarioSchema = new Schema({
     nombre: {
         type: String,
-        minlength: [2, "El nombre debe tener al menos 2 caracteres"],
-        required: [true, "El nombre es obligatorio"]
+        minlength: [2, "El nombre debe tener al menos 2 caracteres."],
+        required: [true, "El nombre es obligatorio."]
     },
     correo: {
         type: String,
-        required: [true, "El correo es obligatorio"],
-        minlength: [5, "El correo debe tener al menos 5 caracteres"],
-        unique: [true, "Email ya esta en uso"],
+        required: [true, "El correo es obligatorio."],
+        minlength: [5, "El correo debe tener al menos 5 caracteres."],
+        unique: [true, "Email ya está en uso."],
         validate: {
             validator: val => /^([\w-\.]+@([\w-]+\.)+[\w-]+)?$/.test(val),
-            message: "Porfavor ingrese un Email valido"
+            message: "Por favor ingrese un email válido."
         }
     },
     contrasena: {
         type: String,
-        required: [true, "La contraseña es obligatoria"],
-        minlength: [8, "La contraseña debe tener al menos 8 caracteres"]
+        required: [true, "La contraseña es obligatoria."],
+        minlength: [8, "La contraseña debe tener al menos 8 caracteres."]
     },
     compras: {
         type: Array,
         default: [],
-        required: [true, "Las compras son obligatorias"],
+        required: [true, "Las compras son obligatorias."],
     },
     rol: {
         type: String,
         default: "cliente",
-        required: [true, "El rol es obligatorio"],
+        required: [true, "El rol es obligatorio."],
     },
 }, { timestamps: true, versionKey: false });
 
