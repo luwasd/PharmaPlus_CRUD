@@ -13,7 +13,7 @@ const Menu = (props) => {
     <nav>
       {admin ? (
         <div className={styles.navBar}>
-          <h1>{`Perfil Administrador de:  ${usuario.nombre}!`}</h1>
+          <h1>{`Perfil administrador de: ${usuario.nombre}`}</h1>
           <div className={styles.navButtons}>
             <NavLink to="/admin">Productos</NavLink>
             <NavLink to="/perfil">Usuarios</NavLink>
@@ -25,13 +25,13 @@ const Menu = (props) => {
         </div>
       ) : (
         <div className={styles.navBar}>
-          <h1>{`Bienvenido/a a Pharma Plus+  ${usuario.nombre}!`}</h1>
+          <h1>{`Bienvenido/a a Pharma Plus+, ${usuario.nombre}`}</h1>
           <div className={styles.navButtons}>
             <NavLink to="/welcome">Inicio</NavLink>
             <NavLink to="/perfil">Perfil</NavLink>
-            <NavLink to="/cart">Completar Compra!</NavLink>
+            <NavLink to="/cart">Finalizar compra</NavLink>
             <NavLink to="/login" onClick={cerrarSesion}>
-              Cerrar Sesión
+              Cerrar sesión
             </NavLink>
           </div>
         </div>
