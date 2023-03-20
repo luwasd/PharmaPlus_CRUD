@@ -118,7 +118,7 @@ const Register = () => {
                 onChange={handleChange}
                 value={contrasena}
                 required
-                minLength={5}
+                minLength={8}
                 type="password"
                 id="contrasena"
                 name="contrasena"
@@ -134,7 +134,7 @@ const Register = () => {
                 onChange={handleChange}
                 value={confirmarContrasena}
                 required
-                minLength={5}
+                minLength={8}
                 type="password"
                 id="confirmarContrasena"
                 name="confirmarContrasena"
