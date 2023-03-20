@@ -26,7 +26,7 @@ const addProductos = async (req, res) => {
                 precio,
             });
 
-            await nuevoProducto.save();
+            nuevoProducto.save();
             res.json({ mensaje: 'Producto agregado', nuevoProducto });
 
         } else {
