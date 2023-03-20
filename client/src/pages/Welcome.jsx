@@ -38,12 +38,12 @@ const Welcome = () => {
   }, [token]);
 
   return (
-    <>
+    <div className={styles.welcomeContainer}>
       <div className={styles.welcome}>
         <Cart />
         <Product />
       </div>
-    </>
+    </div>
   );
 };
 

@@ -110,7 +110,9 @@
 }
 
 .mensajeForm {
-  background-color: #12664f75;
+  background-color: #02352775;
+  color: white;
+  top: 30px;
   border-radius: 10px;
   width: 25%;
   text-align: center;
@@ -118,17 +120,12 @@
   padding: 10px;
 }
 
+.welcomeContainer{
+
+}
+
 .welcome {
-  //width: 90%;
-  //height: 100%;
-  display: flex;
-  align-items: center;
-  flex-direction: column;
-  padding: 40px 70px;
-  margin: 10px 20px;
-  background-color: #fff;
-  border-radius: 10px;
-  box-shadow: 0 0 10px 0 rgba(0, 0, 0, 0.2);
+
 
   h2 {
     text-align: center;
@@ -139,6 +136,7 @@
   }
 
   .cartProducts {
+   justify-content: flex-end;
     width: 80%;
   }
 
