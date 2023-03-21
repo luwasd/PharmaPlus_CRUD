@@ -1,5 +1,6 @@
 import React, { useState } from "react";
 import Swal from "sweetalert2";
+import "./ContactUs.css";
 
 const ContactUs = () => {
   const [subject, setSubject] = useState("");
@@ -9,8 +10,8 @@ const ContactUs = () => {
 
   const emailSent = () => {
     Swal.fire(
-      "Thanks!",
-      `Great, the team received your message. We will reach you as soon as possible`,
+      "Gracias!",
+      `El equipo de Pharma Plus ha recibido tu mensaje. Estaremos en contacto contigo en la brevedad.`,
       "success"
     );
   };
@@ -54,71 +55,75 @@ const ContactUs = () => {
   };
 
   return (
-    <>
-      <div className="container mt-5">
-        <h2 className="mb-3">Contact Form</h2>
-        <form onSubmit={handleSubmit}>
-          <div className="mb-3">
-            <label className="form-label" htmlFor="subject">
-              Subject
-            </label>
-            <input
-              className="form-control"
-              type="text"
-              id="subject"
-              name="subject"
-              onChange={(e) => setSubject(e.target.value)}
-              value={subject}
-              required
-            />
-          </div>
-          <div className="mb-3">
-            <label className="form-label" htmlFor="fullName">
-              Name
-            </label>
-            <input
-              className="form-control"
-              type="text"
-              id="fullName"
-              name="fullName"
-              onChange={(e) => setFullName(e.target.value)}
-              value={fullName}
-              required
-            />
-          </div>
-          <div className="mb-3">
-            <label className="form-label" htmlFor="email">
-              Email
-            </label>
-            <input
-              className="form-control"
-              type="email"
-              id="email"
-              name="email"
-              onChange={(e) => setEmail(e.target.value)}
-              value={email}
-              required
-            />
-          </div>
-          <div className="mb-3">
-            <label className="form-label" htmlFor="message">
-              Message
-            </label>
-            <textarea
-              className="form-control"
-              id="message"
-              name="message"
-              onChange={(e) => setMessage(e.target.value)}
-              value={message}
-              required
-            />
-          </div>
-          <button className="btn btn-danger" type="submit">
-            Send
+    <div className="container mt-5 contact-container">
+      <h2 className="mb-3 text-center">Formulario de contacto</h2>
+      <p className="text-center">
+        Aquí en Pharma Plus apreciamos las sugerencias e ideas, por lo que
+        invitamos a los clientes a manifestarlas a través de este formulario.{" "}
+      </p>
+      <form onSubmit={handleSubmit} className="d-flex row justify-content-center ">
+        <div className="mb-3 w-75">
+          <label className="form-label" htmlFor="subject">
+            Tema
+          </label>
+          <input
+            className="form-control text-center"
+            type="text"
+            id="subject"
+            name="subject"
+            onChange={(e) => setSubject(e.target.value)}
+            value={subject}
+            required
+          />
+        </div>
+        <div className="mb-3 w-75">
+          <label className="form-label" htmlFor="fullName">
+            Nombre
+          </label>
+          <input
+            className="form-control"
+            type="text"
+            id="fullName"
+            name="fullName"
+            onChange={(e) => setFullName(e.target.value)}
+            value={fullName}
+            required
+          />
+        </div>
+        <div className="mb-3 w-75">
+          <label className="form-label" htmlFor="email">
+            Email
+          </label>
+          <input
+            className="form-control"
+            type="email"
+            id="email"
+            name="email"
+            onChange={(e) => setEmail(e.target.value)}
+            value={email}
+            required
+          />
+        </div>
+        <div className="mb-3 w-75">
+          <label className="form-label" htmlFor="message">
+            Mensaje
+          </label>
+          <textarea
+            className="form-control"
+            id="message"
+            name="message"
+            onChange={(e) => setMessage(e.target.value)}
+            value={message}
+            required
+          />
+        </div>
+        <div className="text-center">
+          <button className="btn btn-primary w-25" type="submit">
+            Enviar
           </button>
-        </form>
-      </div>
-    </>
+        </div>
+      </form>
+    </div>
   );
 };
 

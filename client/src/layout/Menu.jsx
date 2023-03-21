@@ -1,9 +1,11 @@
 import React from "react";
-import { NavLink } from "react-router-dom";
+import { NavLink, useNavigate } from "react-router-dom";
 import styles from "./styles.module.scss";
 import Swal from "sweetalert2";
 
 const Menu = (props) => {
+  const navigate = useNavigate();
+
   const confirmarLogout = () => {
     Swal.fire({
       title: `¿Quiere cerrar sesión?`,
@@ -17,6 +19,7 @@ const Menu = (props) => {
     }).then((result) => {
       if (result.isConfirmed) {
         localStorage.removeItem("token");
+        navigate("/welcome");
       }
     });
   };
