@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import Swal from 'sweetalert2';
+import Swal from "sweetalert2";
 
 const ContactUs = () => {
   const [subject, setSubject] = useState("");
@@ -9,18 +9,17 @@ const ContactUs = () => {
 
   const emailSent = () => {
     Swal.fire(
-      'Thanks!',
+      "Thanks!",
       `Great, the team received your message. We will reach you as soon as possible`,
-      'success',
-      
-    )
-  }
+      "success"
+    );
+  };
 
   const handleSubmit = async (e) => {
     e.preventDefault();
 
     try {
-      let res = await fetch(process.env.REACT_APP_BACKEND + "/api/contact", {
+      let res = await fetch("http://localhost:4000/contact", {
         method: "POST",
         headers: {
           "Content-Type": "application/json",
@@ -36,33 +35,30 @@ const ContactUs = () => {
       let data = await res.json();
       console.log(data);
 
-      if(data.status === "success"){
+      if (data.status === "success") {
         emailSent();
         setFullName("");
         setEmail("");
         setMessage("");
         setSubject("");
-      }else{
+      } else {
         Swal.fire({
-          icon: 'error',
-          title: 'ERROR',
+          icon: "error",
+          title: "ERROR",
           text: "Oops. Something went wrong. Try again please",
-      })
+        });
       }
-
-    }catch(error){
-      console.log(error)
+    } catch (error) {
+      console.log(error);
     }
   };
-
-  
 
   return (
     <>
       <div className="container mt-5">
         <h2 className="mb-3">Contact Form</h2>
-        <form onSubmit={handleSubmit} >
-        <div className="mb-3">
+        <form onSubmit={handleSubmit}>
+          <div className="mb-3">
             <label className="form-label" htmlFor="subject">
               Subject
             </label>
