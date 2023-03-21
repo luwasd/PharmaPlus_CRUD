@@ -30,6 +30,7 @@ const Menu = (props) => {
             <NavLink to="/welcome">Inicio</NavLink>
             <NavLink to="/perfil">Perfil</NavLink>
             <NavLink to="/cart">Finalizar compra</NavLink>
+            <NavLink to="/contacto">Contacto</NavLink>
             <NavLink to="/login" onClick={cerrarSesion}>
               Cerrar sesión
             </NavLink>
