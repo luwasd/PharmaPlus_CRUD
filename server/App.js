@@ -21,6 +21,7 @@ const appFactory = () => {
   app.use(productRouter);
   app.use(cartRouter);
 
+  //Para el nodemailer
   app.use(
     cors({
       credentials: true,

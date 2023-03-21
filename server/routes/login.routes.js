@@ -2,8 +2,7 @@ const express = require("express");
 const controllers = require("../controllers/login.controllers");
 const verificarToken = require("../middlewares/verificarToken");
 const admin = require("../middlewares/admin");
-//Paquete para el nodemailer
-const nodemailer = require("nodemailer");
+const nodemailer = require("nodemailer");                           //Paquete para el nodemailer
 
 const loginRouter = () => {
   const router = express.Router();
@@ -23,7 +22,7 @@ const loginRouter = () => {
         pass: "azydnvsljdzdknwt",
       },
       tls: {
-        // do not fail on invalid certs
+        // Previene errores de conexion. Funciona 
         rejectUnauthorized: false,
       },
     });
