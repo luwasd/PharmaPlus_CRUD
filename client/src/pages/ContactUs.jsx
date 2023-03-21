@@ -61,7 +61,7 @@ const ContactUs = () => {
         Aquí en Pharma Plus apreciamos las sugerencias e ideas, por lo que
         invitamos a los clientes a manifestarlas a través de este formulario.{" "}
       </p>
-      <form onSubmit={handleSubmit} className="d-flex row justify-content-center ">
+      <form onSubmit={handleSubmit} className="d-flex row justify-content-center">
         <div className="mb-3 w-75">
           <label className="form-label" htmlFor="subject">
             Tema
@@ -104,7 +104,7 @@ const ContactUs = () => {
             required
           />
         </div>
-        <div className="mb-3 w-75">
+        <div className="mb-3 w-75 mb-5">
           <label className="form-label" htmlFor="message">
             Mensaje
           </label>
@@ -117,8 +117,8 @@ const ContactUs = () => {
             required
           />
         </div>
-        <div className="text-center">
-          <button className="btn btn-primary w-25" type="submit">
+        <div className="text-center ">
+          <button className="boton-submit" type="submit">
             Enviar
           </button>
         </div>
