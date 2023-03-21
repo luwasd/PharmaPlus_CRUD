@@ -28,7 +28,7 @@ const Login = () => {
       };
       setCargando(true);
       await axios
-        .post("http://localhost:8000/login", Data)
+        .post("http://localhost:4000/login", Data)
         .then(({ data }) => {
           setMensaje(data.mensaje);
           setInputs({ correo: "", contrasena: "" });
