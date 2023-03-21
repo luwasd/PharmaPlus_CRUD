@@ -120,9 +120,6 @@
   padding: 10px;
 }
 
-.welcomeContainer {
-}
-
 .welcome {
   h2 {
     text-align: center;
@@ -283,7 +280,7 @@
     display: flex;
     justify-content: space-around;
     gap: 5%;
-    
+
   }
 
   button {
@@ -340,4 +337,9 @@
       font-size: 14px;
     }
   }
+}
+
+.contact-container{
+  background-color: red;
+  height: 100px;
 }
