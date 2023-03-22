@@ -1,0 +1,20 @@
+
+.contenedor{
+    background-color: rgb(192, 238, 223);
+    margin-top: 0;
+    width: 1800px;
+    height: 5rem;
+    position: absolute;
+    float:inline-end;
+}
+img{
+    width: 70px;
+}
+.container{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+button{
+    direction: none;
+}

@@ -8,6 +8,7 @@ import NotFound from "../pages/NotFound";
 import ProfilePage from "../pages/ProfilePage";
 import Register from "../pages/Register";
 import Welcome from "../pages/Welcome";
+import Home from "../pages/Home";
 
 export const router = createBrowserRouter([
   {
@@ -15,7 +16,8 @@ export const router = createBrowserRouter([
     element: <Layout />,
     errorElement: <NotFound />,
     children: [
-      { index: true, element: <Register /> },
+      { index: true, element: <Home/> },
+      { path: "/register", element: <Register /> },
       { path: "/login", element: <Login /> },
       { path: "/welcome", element: <Welcome /> },
       { path: "/cart", element: <CartPage /> },
