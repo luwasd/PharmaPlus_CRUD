@@ -1,15 +1,18 @@
 .contenedorProductos {
+  margin-top: 100px;
   width: 100%;
   display: grid;
-  grid-template-columns: repeat(4, 0fr);
-  grid-row-gap: 20px;
-  grid-column-gap: 85px;
+  grid-template-columns: repeat(5, 0fr);
+  grid-row-gap: 30px;
+  grid-column-gap: 45px;
   justify-items: center;
   justify-content: center;
+ 
 
   .producto {
-    width: 280px;
-    height: 400px;
+    background-color: #bdddce;
+    width: 260px;
+    height: 380px;
     display: flex;
     flex-direction: column;
     align-items: center;
@@ -18,12 +21,30 @@
     // gap: 10px;
     border-radius: 10px;
     box-shadow: 0 0 10px 1px rgba(0, 0, 0, 0.2);
-    font-weight: bold;
     text-align: center;
+
+    .contenedorProductosTexto{
+      flex: 2
+    }
+
+    .contenedorProductosTexto p{
+      font-weight: bold;
+      font-size: 15px;
+    }
+
+    .contenedorProductosTexto span{
+      font-size: 12px;
+    }
+
+
 
     img {
       width: 75%;
-      margin-bottom: 10px;
+      margin-bottom: 30px;
+    }
+
+    .contenedorProductosImagen{
+      flex: 1
     }
 
     button {
