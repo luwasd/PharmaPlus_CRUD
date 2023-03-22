@@ -62,7 +62,7 @@ const ContactUs = () => {
         invitamos a los clientes a manifestarlas a través de este formulario.{" "}
       </p>
       <form onSubmit={handleSubmit} className="d-flex row justify-content-center">
-        <div className="mb-3 w-75">
+        <div className="mb-3 w-100">
           <label className="form-label" htmlFor="subject">
             Tema
           </label>
@@ -76,7 +76,7 @@ const ContactUs = () => {
             required
           />
         </div>
-        <div className="mb-3 w-75">
+        <div className="mb-3 w-100">
           <label className="form-label" htmlFor="fullName">
             Nombre
           </label>
@@ -90,7 +90,7 @@ const ContactUs = () => {
             required
           />
         </div>
-        <div className="mb-3 w-75">
+        <div className="mb-3 w-100">
           <label className="form-label" htmlFor="email">
             Email
           </label>
@@ -104,7 +104,7 @@ const ContactUs = () => {
             required
           />
         </div>
-        <div className="mb-3 w-75 mb-5">
+        <div className="mb-3 w-100 mb-5">
           <label className="form-label" htmlFor="message">
             Mensaje
           </label>

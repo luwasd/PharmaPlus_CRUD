@@ -33,11 +33,9 @@ const Menu = (props) => {
           <h1>{`Perfil administrador de: ${usuario.nombre}`}</h1>
           <div className={styles.navButtons}>
             <NavLink to="/admin">Productos</NavLink>
-            <NavLink to="/perfil">Usuarios</NavLink>
-            {/* <NavLink to="/cart">Completar Compra!</NavLink> */}
-            <NavLink onClick={confirmarLogout}>
-              Cerrar sesión
-            </NavLink>
+            {/*<NavLink to="/perfil">Usuarios</NavLink>
+             <NavLink to="/cart">Completar Compra!</NavLink> */}
+            <NavLink onClick={confirmarLogout}>Cerrar sesión</NavLink>
           </div>
         </div>
       ) : (
@@ -48,9 +46,7 @@ const Menu = (props) => {
             <NavLink to="/perfil">Perfil</NavLink>
             <NavLink to="/cart">Finalizar compra</NavLink>
             <NavLink to="/contacto">Contacto</NavLink>
-            <NavLink onClick={confirmarLogout}>
-              Cerrar sesión
-            </NavLink>
+            <NavLink onClick={confirmarLogout}>Cerrar sesión</NavLink>
           </div>
         </div>
       )}

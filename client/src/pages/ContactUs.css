@@ -1,10 +1,16 @@
 .contact-container{
-    background-color: #92b9ae;
-    border-radius: 50px;
+    background-color: #ffffff;
+    border-radius: 10px;
     padding: 25px;
     width: 45%;
     height: 78%;
     box-shadow: 0 0 10px 1px rgba(0, 0, 0, 0.2);
+    border: 2px solid #12664f;
+}
+
+h2, label{
+    color: #12664f;
+    font-weight: bold;
 }
 
 .boton-submit{

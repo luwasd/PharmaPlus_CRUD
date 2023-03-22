@@ -1,5 +1,6 @@
 .registerContainer {
   padding: 60px 0;
+  border-radius: 10px;
   width: 100%;
   display: flex;
   flex-direction: row;
@@ -9,6 +10,7 @@
   background-position: center top;
 }
 .loginContainer {
+  border-radius: 10px;
   padding: 60px 0;
   width: 100%;
   display: flex;
@@ -55,7 +57,6 @@
     display: flex;
     flex-direction: column;
     gap: 20px;
-  
   }
 
   .btnContainer {
@@ -137,17 +138,36 @@
     color: #12664f;
   }
 
+  //! CartPage.jsx
   .cartProducts {
+    background-color: #0f6f32;
     justify-content: flex-end;
-    width: 80%;
+    padding: 5px;
+    border-radius: 10px;
+    margin-top: 2%;
   }
-
   .cartFinalizar {
-    width: 100%;
     display: flex;
     flex-direction: row;
-    justify-content: space-between;
-    align-items: center;
+    flex-direction: row;
+    justify-content: space-around;
+    align-self: flex-end;
+    align-content: flex-end;
+    align-content: flex-end;
+    margin-top: 3%;
+
+    span{
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      align-self: center;
+      align-content: center;
+      margin: 1.5% 0;
+      font-size: 20px;
+      color: #12664f;
+      font-weight: bold;
+      padding: 5px 10px;
+    }
 
     button {
       border: none;
@@ -155,7 +175,7 @@
       border: #12664f 2px double;
       padding: 5px 10px;
       cursor: pointer;
-      font-size: 30px;
+      font-size: 20px;
       font-weight: bold;
       background-color: #fff;
       color: #12664f;
@@ -173,15 +193,15 @@
 }
 
 .admin {
-  //background-color: red;
+  margin-top: 5%;
+  background-color: #2e8c73;
   width: 90%;
   height: 100%;
   display: flex;
   align-items: center;
   flex-direction: column;
   padding: 40px 70px;
-  margin: 10px 20px;
-  background-color: #fff;
+  margin: 50px 20px;
   border-radius: 10px;
   box-shadow: 0 0 10px 0 rgba(0, 0, 0, 0.2);
 
@@ -226,7 +246,6 @@
   }
 
   .adminProductos {
-    
     width: 100%;
     // display: grid;
     // grid-template-columns: repeat(3, 0fr);
@@ -241,7 +260,8 @@
 }
 
 .productFormContainer {
-  background-color: #2e8c73;
+  border: black 2px solid;
+  background-color: #3ab292;
   position: fixed;
   top: 50%;
   left: 50%;
@@ -262,7 +282,7 @@
   h3 {
     font-size: 20px;
     text-align: center;
-    color: white;
+    color: black;
   }
 
   h2 {
@@ -280,15 +300,14 @@
     gap: 20px;
   }
 
-  label{
+  label {
     font-weight: bold;
   }
 
-  .btnsContainer{
+  .btnsContainer {
     display: flex;
     justify-content: space-around;
     gap: 5%;
-
   }
 
   button {
@@ -309,7 +328,7 @@
   }
 
   button:hover {
-    background-color: #f0fffb;
+    background-color: #2e8c73;
   }
 
   p {
@@ -347,15 +366,13 @@
   }
 }
 
-.contact-container{
+.contact-container {
   background-color: red;
   height: 100px;
 }
 
 .purchaseHistory {
-
-
-  img{
+  img {
     width: 100px;
     height: 100px;
     border-radius: 10px;
@@ -365,4 +382,71 @@
     flex-direction: row;
     justify-content: space-between;
   }
+}
+
+//! ProfilePage.jsx
+.profileContainer {
+  width: 55vw;
+  margin-top: 5%;
+  margin-bottom: 5%;
+  background-color: #ffffff;
+  border-radius: 10px;
+  padding: 1% 10%;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  //align-items: center;
+  border: 2px solid #12664f;
+}
+//Div de Datos del usuario
+.profile {
+  h2 {
+    font-size: 35px;
+  }
+  h3 {
+    width: 50%;
+    display: flex;
+    align-content: center;
+    align-items: center;
+    align-self: center;
+    font-size: 18px;
+  }
+  span {
+    margin-left: 2%;
+    flex: 2;
+    font-size: 15px;
+  }
+}
+
+//Historial de compras
+.purchaseHistory {
+  h1 {
+    text-align: left;
+    font-size: 25px;
+    color: #12664f;
+    font-weight: bold;
+    margin-top: 5%;
+  }
+  h3 {
+    margin: 2% 0;
+    font-size: 17px;
+  }
+}
+//Lista de productos del historial de compras
+.purchase {
+  margin: 4% 0;
+  display: flex;
+  flex-direction: column;
+
+  h4 {
+    font-size: 15px;
+  }
+}
+.purchaseImg {
+  flex: 2;
+  text-align: flex-start;
+}
+.purchaseData {
+  flex: 5;
+  align-self: center;
 }

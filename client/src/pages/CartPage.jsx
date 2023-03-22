@@ -5,7 +5,14 @@ import ProductosCart from "../components/ProductosCart";
 import styles from "./styles.module.scss";
 
 const CartPage = () => {
-  const { validarAdmin, usuario, setUsuario, cartItem, setCartItem, deleteFromCart } = useOutletContext();
+  const {
+    validarAdmin,
+    usuario,
+    setUsuario,
+    cartItem,
+    setCartItem,
+    deleteFromCart,
+  } = useOutletContext();
   const { correo } = usuario;
 
   const userCart = cartItem.filter((item) => item.correo === correo);
@@ -76,7 +83,10 @@ const CartPage = () => {
           ))}
         </div>
         <div className={styles.cartFinalizar}>
-          <h2 className={styles.total}>Total: ${total.toLocaleString()}</h2>
+          <div>
+          <span>Total: {total.toLocaleString()} gs.</span>
+          </div>
+          
           <button onClick={() => completarCompra()}>Completar Compra!</button>
         </div>
       </div>
