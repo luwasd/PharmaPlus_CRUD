@@ -101,8 +101,8 @@ const register = async (req, res) => {
 
 const agregarCompra = async (req, res) => {
   const userId = req.user.id;
-  const { userCart, total } = req.body;
-  const compra = { userCart, total };
+  const { userCart, total, fecha } = req.body;
+  const compra = { userCart, fecha, total };
   Usuario.findById(userId).then((usuario) => {
     if (!usuario) {
       return res.json({ mensaje: "No se ha encontrado el usuario." });

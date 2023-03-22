@@ -12,7 +12,7 @@ const NotFound = () => {
         <div className="alert alert-danger">
           {error.statusText || error.message}
         </div>
-        <Link className="btn btn-success w-100" to="/welcome">
+        <Link className="btn btn-success w-100" to="/">
           Back to home
         </Link>
       </div>

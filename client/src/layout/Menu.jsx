@@ -19,7 +19,7 @@ const Menu = (props) => {
     }).then((result) => {
       if (result.isConfirmed) {
         localStorage.removeItem("token");
-        navigate("/welcome");
+        navigate("/");
       }
     });
   };
@@ -42,7 +42,7 @@ const Menu = (props) => {
         <div className={styles.navBar}>
           <h1>{`Bienvenido/a a Pharma Plus+, ${usuario.nombre}`}</h1>
           <div className={styles.navButtons}>
-            <NavLink to="/">Inicio</NavLink>
+            <NavLink to="/welcome">Inicio</NavLink>
             <NavLink to="/perfil">Perfil</NavLink>
             <NavLink to="/cart">Finalizar compra</NavLink>
             <NavLink to="/contacto">Contacto</NavLink>

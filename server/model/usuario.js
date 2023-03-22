@@ -47,11 +47,15 @@ UsuarioSchema.pre('validate', function (next) {
 });
 
 UsuarioSchema.pre('save', function (next) {
+    if (!this.isNew) {
+        return next(); // si no es nuevo, continúa con el flujo normal
+    }
     bcrypt.hash(this.contrasena, 10)
         .then((hash) => {
             this.contrasena = hash;
             next();
         });
 });
+
 
 module.exports = model('Usuario', UsuarioSchema);

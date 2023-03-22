@@ -2,7 +2,6 @@ import React from 'react'
 import styled from 'styled-components'
 import Banners from '../components/Banners'
 import Heard from '../components/Heard'
-
 import '../styles/banners.css'
 
 const Home = () => {
@@ -22,4 +21,4 @@ const Titulo = styled.p`
     margin-bottom:10px
 `;
 
-export default Home
+export default Home;

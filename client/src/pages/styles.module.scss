@@ -419,7 +419,19 @@
 }
 
 //Historial de compras
+
+.h1Historial {
+  text-align: left;
+  font-size: 25px;
+  color: #12664f;
+  font-weight: bold;
+  margin-top: 3%;
+  margin-bottom: 2%;
+}
+
 .purchaseHistory {
+  overflow: scroll;
+  height: 500px;
   h1 {
     text-align: left;
     font-size: 25px;
@@ -430,6 +442,16 @@
   h3 {
     margin: 2% 0;
     font-size: 17px;
+  }
+  .cajaCompra {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: flex-start;
+    border: 2px solid #12664f;
+    border-radius: 10px;
+    padding: 2%;
+    margin-bottom: 5%;
   }
 }
 //Lista de productos del historial de compras

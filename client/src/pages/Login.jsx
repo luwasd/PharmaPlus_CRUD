@@ -13,7 +13,7 @@ const Login = () => {
   const [mensaje, setMensaje] = useState();
   const [cargando, setCargando] = useState(false);
 
-  const { nombre, correo, contrasena } = inputs;
+  const { correo, contrasena } = inputs;
 
   const handleChange = (e) => {
     setInputs({ ...inputs, [e.target.name]: e.target.value });
@@ -87,7 +87,7 @@ const Login = () => {
                 onChange={handleChange}
                 value={contrasena}
                 required
-                minLength={5}
+                minLength={8}
                 type="password"
                 id="contrasena"
                 name="contrasena"

@@ -31,10 +31,11 @@ const CartPage = () => {
     if (!token) {
       navigate("/login");
     } else {
+      const fecha = new Date().toLocaleString();
       axios
         .put(
           `http://localhost:4000/compras`,
-          { userCart, total },
+          { userCart, total, fecha },
           {
             headers: {
               acceso: token, // token
