@@ -69,7 +69,7 @@ const Cart = () => {
 
       {cartItem && cartOpen && (
         <div className={styles.cart}>
-          <h2>Tu carrito</h2>
+          <h2> Tu carrito 🛒</h2>
 
           {cartItem.length === 0 ? (
             <p className={styles.cartVacio}>Tu carrito esta vacío</p>
@@ -80,8 +80,10 @@ const Cart = () => {
               ))}
             </div>
           )}
-
-          <h2 className={styles.total}>Total: ${total.toLocaleString()}</h2>
+          <div className={styles.precioContainer}>
+            <h2 className={styles.total}>El total es <span className={styles.totalPrecio}>{total.toLocaleString()}</span> gs</h2>
+          </div>
+          
         </div>
       )}
     </div>

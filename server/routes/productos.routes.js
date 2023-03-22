@@ -2,6 +2,7 @@ const express = require("express");
 const controllers = require("../controllers/productos.controllers");
 const admin = require("../middlewares/admin");
 
+
 const productosRouter = () => {
   const router = express.Router();
   //metodos del controlador (post, get, put, delete)

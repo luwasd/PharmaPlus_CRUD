@@ -11,16 +11,21 @@ const Product = () => {
         productos.map((producto, i) => {
           return (
             <div key={i} className={style.producto}>
-              <img src={producto.imagen} alt={producto.nombre} />
-              <div>
-                <p>
-                  {producto.nombre} - ${producto.precio.toLocaleString()}
-                </p>
-                <p>{producto.descripcion}</p>
+              <div className={style.contenedorProductosImagen}>
+                <img src={producto.imagen} alt={producto.nombre} />
               </div>
-              <button onClick={() => addToCart(producto)}>
-                Agregar al carrito
-              </button>
+
+              <div className={style.contenedorProductosTexto}>
+                <p>
+                  {producto.nombre} - {producto.precio.toLocaleString()} gs.
+                </p>
+                <span>{producto.descripcion}</span>
+              </div>
+              <div className={style.contenedorProductosButton}>
+                <button onClick={() => addToCart(producto)}>
+                  Agregar al carrito
+                </button>
+              </div>
             </div>
           );
         })}
