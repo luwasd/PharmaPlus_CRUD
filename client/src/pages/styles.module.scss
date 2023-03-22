@@ -375,7 +375,6 @@
   justify-content: center;
   //align-items: center;
   border: 2px solid #12664f;
-  
 }
 //Div de Datos del usuario
 .profile {
@@ -399,8 +398,6 @@
 
 //Historial de compras
 .purchaseHistory {
-
-  
   h1 {
     text-align: left;
     font-size: 25px;
@@ -423,11 +420,11 @@
     font-size: 15px;
   }
 }
-.purchaseImg{
+.purchaseImg {
   flex: 2;
   text-align: flex-start;
 }
-.purchaseData{
+.purchaseData {
   flex: 5;
   align-self: center;
 }
