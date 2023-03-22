@@ -136,17 +136,36 @@
     color: #12664f;
   }
 
+  //! CartPage.jsx
   .cartProducts {
+    background-color: #0f6f32;
     justify-content: flex-end;
-    width: 80%;
+    padding: 5px;
+    border-radius: 30px;
+    margin-top: 2%;
   }
-
   .cartFinalizar {
-    width: 100%;
     display: flex;
     flex-direction: row;
-    justify-content: space-between;
-    align-items: center;
+    flex-direction: row;
+    justify-content: space-around;
+    align-self: flex-end;
+    align-content: flex-end;
+    align-content: flex-end;
+    margin-top: 3%;
+
+    span{
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      align-self: center;
+      align-content: center;
+      margin: 1.5% 0;
+      font-size: 20px;
+      color: #12664f;
+      font-weight: bold;
+      padding: 5px 10px;
+    }
 
     button {
       border: none;
@@ -154,7 +173,7 @@
       border: #12664f 2px double;
       padding: 5px 10px;
       cursor: pointer;
-      font-size: 30px;
+      font-size: 20px;
       font-weight: bold;
       background-color: #fff;
       color: #12664f;

@@ -8,6 +8,11 @@
     border: 2px solid #12664f;
 }
 
+h2, label{
+    color: #12664f;
+    font-weight: bold;
+}
+
 .boton-submit{
     background-color: #12664f;
     color: white;
