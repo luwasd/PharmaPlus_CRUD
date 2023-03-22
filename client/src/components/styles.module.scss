@@ -240,10 +240,11 @@
 
 //para ProductosCart
 .itemCartExpanded {
+  width: 1000px;
   margin: 20px;
   border-radius: 30px;
   border: solid 2px #12664f;
-  padding: 10px;
+  padding: 20px;
   color: #12664f;
   display: flex;
   flex-direction: column;
@@ -366,5 +367,95 @@
 
   button:hover {
     background-color: #2e8c73;
+  }
+}
+
+.productFormContainer {
+  background-color: #2e8c73;
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  z-index: 2;
+  min-width: 400px;
+  width: 60%;
+  max-width: 500px;
+  margin-top: 10px;
+  padding: 40px;
+  //background-color: #fff;
+  border-radius: 10px;
+  //box-shadow: 0 0 10px 1px rgba(0, 0, 0, 0.2);
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+
+  h3 {
+    font-size: 20px;
+    text-align: center;
+    color: white;
+  }
+
+  form {
+    margin-top: 20px;
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+  }
+
+  label{
+    font-weight: bold;
+  }
+
+  .btnsContainer{
+    display: flex;
+    justify-content: space-around;
+    gap: 5%;
+
+  }
+
+  button {
+    border: none;
+    border-radius: 10px;
+    border: #12664f 2px double;
+    border: none;
+    width: 30%;
+    padding: 10px 0;
+    cursor: pointer;
+    font-size: 15px;
+    font-weight: bold;
+    background-color: #e0fbf3;
+    border: solid #2f2f2f 2px;
+    border-radius: 10px;
+    color: black;
+    //transition-duration: 3s;
+  }
+
+  button:hover {
+    background-color: #f0fffb;
+  }
+
+  p {
+    text-align: center;
+    font-size: 15px;
+  }
+
+  .inputBox {
+    background-color: #ececec;
+    padding: 10px 15px;
+    border-radius: 10px;
+    display: flex;
+    flex-direction: column;
+    gap: 3px;
+
+    label {
+      font-size: 12px;
+    }
+
+    input {
+      border: none;
+      background-color: inherit;
+      color: #2f2f2f;
+      font-size: 14px;
+    }
   }
 }
