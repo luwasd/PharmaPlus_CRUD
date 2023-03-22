@@ -32,6 +32,9 @@ const Welcome = () => {
         .then(({ data }) => {
           setUsuario(data);
           validarAdmin(data);
+          if (data.rol === "admin") {
+            navigate(`/admin`);
+          }
         })
         .catch((error) => console.error(error));
     }
