@@ -8,8 +8,8 @@ const productosRouter = () => {
   //metodos del controlador (post, get, put, delete)
   router.get("/productos", controllers.getProductos);
   router.post("/productos", controllers.addProductos); //aun no se usa pero quiero agreagar mas adelante manejo de stcok y agregar productos
+  router.delete('/productos/:productoId', controllers.deleteProducto); 
   // router.put('/:id', controllers.update);
-  // router.delete('/:id', controllers.remove);
 
   return router;
 };
