@@ -84,7 +84,7 @@ const Layout = () => {
       confirmButtonColor: "#3085d6",
       cancelButtonColor: "#d33",
       cancelButtonText: "Cancelar",
-      confirmButtonText: "Sí, favor eliminar.",
+      confirmButtonText: "Sí, quiero eliminarlo.",
     }).then(async (result) => {
       if (result.isConfirmed) {
         await axios

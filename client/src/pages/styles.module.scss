@@ -191,15 +191,15 @@
 }
 
 .admin {
-  //background-color: red;
+  margin-top: 5%;
+  background-color: #2e8c73;
   width: 90%;
   height: 100%;
   display: flex;
   align-items: center;
   flex-direction: column;
   padding: 40px 70px;
-  margin: 10px 20px;
-  background-color: #fff;
+  margin: 50px 20px;
   border-radius: 10px;
   box-shadow: 0 0 10px 0 rgba(0, 0, 0, 0.2);
 
@@ -258,7 +258,8 @@
 }
 
 .productFormContainer {
-  background-color: #2e8c73;
+  border: black 2px solid;
+  background-color: #3ab292;
   position: fixed;
   top: 50%;
   left: 50%;
@@ -279,7 +280,7 @@
   h3 {
     font-size: 20px;
     text-align: center;
-    color: white;
+    color: black;
   }
 
   h2 {
@@ -325,7 +326,7 @@
   }
 
   button:hover {
-    background-color: #f0fffb;
+    background-color: #2e8c73;
   }
 
   p {

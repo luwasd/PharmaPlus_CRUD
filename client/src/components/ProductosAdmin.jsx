@@ -17,14 +17,14 @@ const ProductosAdmin = ({ item }) => {
     e.preventDefault();
     Swal.fire({
       html: `<div><img src="${imagen}" width="150"/></div>`,
-      title: `¿Desea confrimar el nuevo precio del producto a ${nuevoPrecio}?`,
+      title: `¿Desea confirmar el nuevo precio del producto a ${nuevoPrecio}?`,
       //text: "We'll miss you!",
       // icon: "warning",
       showCancelButton: true,
       confirmButtonColor: "#3085d6",
       cancelButtonColor: "#d33",
       cancelButtonText: "Cancelar",
-      confirmButtonText: "Sí, favor confirmar.",
+      confirmButtonText: "Sí, quiero modificar.",
     }).then(async (result) => {
       if (result.isConfirmed) {
         await axios
