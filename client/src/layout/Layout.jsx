@@ -3,6 +3,7 @@ import { Outlet, useLocation } from "react-router-dom";
 import Menu from "./Menu";
 import styles from "./styles.module.scss";
 import axios from "axios";
+import Swal from "sweetalert2";
 
 const Layout = () => {
   const [usuario, setUsuario] = useState({});
@@ -73,13 +74,28 @@ const Layout = () => {
     getProductosCarrito();
   };
 
-  const deleteProducto = async (id) => {
-    await axios
-      .delete(`http://localhost:4000/productos/${id}`)
-      .then(({ data }) => console.log(data));
+  const deleteProducto = async (id, nombre, imagen) => {
+    Swal.fire({
+      html: `<div><img src="${imagen}" width="150"/></div>`,
+      title: `¿Desea eliminar el producto ${nombre}?`,
+      //text: "We'll miss you!",
+      // icon: "warning",
+      showCancelButton: true,
+      confirmButtonColor: "#3085d6",
+      cancelButtonColor: "#d33",
+      cancelButtonText: "Cancelar",
+      confirmButtonText: "Sí, favor eliminar.",
+    }).then(async (result) => {
+      if (result.isConfirmed) {
+        await axios
+          .delete(`http://localhost:4000/productos/${id}`)
+          .then(({ data }) => console.log(data));
 
-    getProductos();
-    getProductosCarrito();
+        getProductos();
+        getProductosCarrito();
+      }
+    });
+
   };
 
   const validarAdmin = (usuario) => {

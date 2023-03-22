@@ -5,6 +5,7 @@ import CartPage from "../pages/CartPage";
 import ContactUs from "../pages/ContactUs";
 import Login from "../pages/Login";
 import NotFound from "../pages/NotFound";
+import ProfilePage from "../pages/ProfilePage";
 import Register from "../pages/Register";
 import Welcome from "../pages/Welcome";
 
@@ -20,6 +21,7 @@ export const router = createBrowserRouter([
       { path: "/cart", element: <CartPage /> },
       { path: "/contacto", element: <ContactUs/> },
       { path: "/admin", element: <AdminPage /> },
+      { path: "/perfil", element: <ProfilePage /> },
     ],
   },
 ]);

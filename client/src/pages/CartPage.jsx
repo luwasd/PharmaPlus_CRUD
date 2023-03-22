@@ -5,8 +5,7 @@ import ProductosCart from "../components/ProductosCart";
 import styles from "./styles.module.scss";
 
 const CartPage = () => {
-  const { usuario, setUsuario, cartItem, setCartItem, deleteFromCart } =
-    useOutletContext();
+  const { validarAdmin, usuario, setUsuario, cartItem, setCartItem, deleteFromCart } = useOutletContext();
   const { correo } = usuario;
 
   const userCart = cartItem.filter((item) => item.correo === correo);
@@ -56,7 +55,13 @@ const CartPage = () => {
             acceso: token, // token
           },
         })
-        .then(({ data }) => setUsuario(data))
+        .then(({ data }) => {
+          setUsuario(data);
+          validarAdmin(data);
+          if (data.rol === "admin") {
+            navigate(`/admin`);
+          }
+        })
         .catch((error) => console.error(error));
     }
   }, [token]);

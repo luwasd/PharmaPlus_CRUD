@@ -34,8 +34,6 @@ const Welcome = () => {
           validarAdmin(data);
           if (data.rol === "admin") {
             navigate(`/admin`);
-          } else {
-            navigate(`/welcome`);
           }
         })
         .catch((error) => console.error(error));

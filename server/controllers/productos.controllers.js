@@ -60,4 +60,12 @@ const deleteProducto = async (req, res) => {
     }
 };
 
-module.exports = { getProductos, addProductos, deleteProducto };
+const updateProducto = async (req, res) => {
+    const { productoId } = req.params;
+    const { precio } = req.body;
+    Producto.findByIdAndUpdate(productoId, { precio })  //actualizar el precio del producto
+        .then(() => res.json({ mensaje: "Se ha actualizado el precio del producto" }))
+        .catch((err) => res.status(400).json({ mensaje: "No se ha podido actualizar el precio del producto" }));
+};
+
+module.exports = { getProductos, addProductos, deleteProducto, updateProducto };
