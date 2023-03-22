@@ -53,14 +53,14 @@ const ProductosAdmin = ({ item }) => {
             Stock: <span className={styles.cantidad}>1</span>
           </p> */}
           <p style={{ fontWeight: "bold" }}>
-            Precio: ${precio.toLocaleString()}
+            Precio: {precio.toLocaleString()} gs.
           </p>
         </div>
         <div className={styles.superior}>
-          <button onClick={() => deleteProducto(_id, nombre, imagen)}>
+          <button onClick={() => deleteProducto(_id, nombre, imagen)} className={styles.deleteBtn}>
             Eliminar Producto
           </button>
-          <button onClick={() => setMostrarFormulario(true)}>
+          <button onClick={() => setMostrarFormulario(true)} className={styles.editBtn}>
             Modificar Precio
           </button>
         </div>
