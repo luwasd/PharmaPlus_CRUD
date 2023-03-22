@@ -12,7 +12,7 @@ const Layout = () => {
   const [admin, setAdmin] = useState(false);
 
   const location = useLocation();
-  const showMenu = location.pathname !== "/login" && location.pathname !== "/";
+  const showMenu = location.pathname !== "/login" && location.pathname !== "/" && location.pathname !== "/register";
   const token = localStorage.getItem("token");
 
   const getProductos = async () => {
