@@ -73,6 +73,15 @@ const Layout = () => {
     getProductosCarrito();
   };
 
+  const deleteProducto = async (id) => {
+    await axios
+      .delete(`http://localhost:4000/productos/${id}`)
+      .then(({ data }) => console.log(data));
+
+    getProductos();
+    getProductosCarrito();
+  };
+
   const validarAdmin = (usuario) => {
     const { rol } = usuario;
     if (rol === "admin") {
@@ -99,6 +108,7 @@ const Layout = () => {
             deleteFromCart,
             getProductos,
             getProductosCarrito,
+            deleteProducto,
           }}
         />
       </div>
