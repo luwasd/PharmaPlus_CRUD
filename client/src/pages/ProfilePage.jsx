@@ -57,7 +57,7 @@ const ProfilePage = () => {
                         {compras.map((item, i) => (
                             <div className={styles.cajaCompra} key={i}>
                                     <h3>- Fecha de compra: <span>{item.fecha}</span></h3>
-                                    <h3>- El total de esta compra fue de <span>{item.total}</span> gs.</h3>
+                                    <h3>- El total de esta compra fue de <span>{(item.total).toLocaleString()}</span> gs.</h3>
                                     <h3>- Estos son los productos que compraste:</h3>
                                 {item.userCart.map((item, i) => (
                                     <div className={styles.purchase} key={i}>
@@ -66,7 +66,7 @@ const ProfilePage = () => {
                                         </div>
                                         <div className={styles.purchaseData}>
                                             <h4>Nombre: {item.nombre}</h4>
-                                            <h4>Precio: {item.precio} gs.</h4>
+                                            <h4>Precio: {(item.precio).toLocaleString()} gs.</h4>
                                             <h4>Cantidad: {item.cantidad}</h4>
                                         </div>
                                     </div>
