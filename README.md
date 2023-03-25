@@ -33,6 +33,7 @@ Este sistema CRUD permite:
 
 ## Tecnologías utilizadas
 
+- React.js
 - Node.js
 - Express.js
 - MongoDB
