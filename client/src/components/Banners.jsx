@@ -1,4 +1,4 @@
-import React, {useRef, useEffect} from 'react'
+import React, { useRef, useEffect } from 'react'
 import '../styles/banners.css'
 import styled from 'styled-components'
 import img1 from '../assets/imagen1.jpg'
@@ -14,9 +14,9 @@ import lema from '../assets/lema.png'
 const Banners = () => {
     const bannerShow = useRef(null);
 
-    const sgte = ()=>{
+    const sgte = () => {
         //comprobamos si hay elemento 
-        if(bannerShow.current.children.length >0){
+        if (bannerShow.current.children.length > 0) {
             //se obtiene el primer elemento 
             const primerElemnto = bannerShow.current.children[0];
             //transicion para desplazar
@@ -25,11 +25,11 @@ const Banners = () => {
             const tamañoBanner = bannerShow.current.children[0].offsetWidth;
             //mover imagen 
             bannerShow.current.style.transform = `translateX(-${tamañoBanner}px)`;
-            
+
             const transicion = () => {
                 //reinicia la posicion del banner
                 bannerShow.current.style.transition = 'none';
-                bannerShow.current.style.transform =`translateX(0)`;
+                bannerShow.current.style.transform = `translateX(0)`;
 
                 //toma el primer elemento y lo manda al final 
                 bannerShow.current.appendChild(primerElemnto);
@@ -37,14 +37,14 @@ const Banners = () => {
                 bannerShow.current.removeListener('transitionend');
             }
             //EventListener para cuadno termian la animacion
-            bannerShow.current.addEventListener('transitionend',transicion)
+            bannerShow.current.addEventListener('transitionend', transicion)
         }
     }
-    const anterior = ()=>{
+    const anterior = () => {
         console.log('anterior');
-        if(bannerShow.current.children.length > 0){
+        if (bannerShow.current.children.length > 0) {
             // se obtiene el uletimo elemento 
-            const index = bannerShow.current.children.length -1;
+            const index = bannerShow.current.children.length - 1;
             const ultimoElemto = bannerShow.current.children[index];
             bannerShow.current.insertBefore(ultimoElemto, bannerShow.current.firstChild);
 
@@ -53,64 +53,64 @@ const Banners = () => {
             const tamañoBanner = bannerShow.current.children[0].offsetWidth;
             bannerShow.current.style.transform = `translateX(-${tamañoBanner}px)`;
 
-            setTimeout(()=>{
+            setTimeout(() => {
                 bannerShow.current.style.transition = '300ms ease-out all';
                 bannerShow.current.style.transform = `translateX(0)`;
-            },30);
+            }, 30);
         }
 
     }
 
-    useEffect(()=>{
-        const intervalo = setInterval(()=>{
+    useEffect(() => {
+        const intervalo = setInterval(() => {
             sgte();
-        },5000);
-    },[]);
-        return (
-            <ContenedorPrincipal>
-                <ContenedorSlider ref={bannerShow}>
-                    <Slider>
-                        <a href="https://www.laroche-posay.es/">
-                            <img  src={img1} alt="" />
-                        </a>
-                    </Slider>
-                    <Slider>
-                        <a href="https://www.colgate.com/es-uy/orthogard">
-                            <img src={img2} alt="" />
-                        </a>
-                    </Slider>
-                    <Slider>
-                        <a href="https://www.dove.com/py/home.html">
-                            <img  src={img3} alt="" />
-                        </a>
-                     </Slider>
-                </ContenedorSlider>
-               <Controles>
+        }, 5000);
+    }, []);
+    return (
+        <ContenedorPrincipal>
+            <ContenedorSlider ref={bannerShow}>
+                <Slider>
+                    <a href="https://www.laroche-posay.es/">
+                        <img src={img1} alt="" />
+                    </a>
+                </Slider>
+                <Slider>
+                    <a href="https://www.colgate.com/es-uy/orthogard">
+                        <img src={img2} alt="" />
+                    </a>
+                </Slider>
+                <Slider>
+                    <a href="https://www.dove.com/py/home.html">
+                        <img src={img3} alt="" />
+                    </a>
+                </Slider>
+            </ContenedorSlider>
+            <Controles>
                 <Boton onClick={anterior}>
                     <img src={izq} alt="" />
                 </Boton>
                 <Boton derecho onClick={sgte}>
                     <img src={der} alt="" />
                 </Boton>
-               </Controles>
-               <div className='footer'>
-                 <div>
-                   <br /><span> <i className="bi bi-envelope-at"></i> pharmaplus@gmail.com</span> <br />
-                    <span><i class="bi bi-telephone"> </i> 071 000 200</span> <br />
-                    <span><i class="bi bi-geo-fill"> </i> Encarnacion-Paraguay</span>
-                 </div>
-                 <div className='lema'>
+            </Controles>
+            <div className='footer'>
+                <div>
+                    <br /><span> <i className="bi bi-envelope-at"></i> pharmaplus@gmail.com</span> <br />
+                    <span><i className="bi bi-telephone"> </i> 071 000 200</span> <br />
+                    <span><i className="bi bi-geo-fill"> </i> Encarnacion-Paraguay</span>
+                </div>
+                <div className='lema'>
                     <img src={lema} alt="" />
-                 </div>
-                 <div className='redes'>
-                    <span><i class="bi bi-instagram"></i></span>
-                    <span><i class="bi bi-twitter"></i></span>
-                    <span><i class="bi bi-facebook"></i></span>
-                 </div>
-               </div>
-            </ContenedorPrincipal>
-            
-        )
+                </div>
+                <div className='redes'>
+                    <span><i className="bi bi-instagram"></i></span>
+                    <span><i className="bi bi-twitter"></i></span>
+                    <span><i className="bi bi-facebook"></i></span>
+                </div>
+            </div>
+        </ContenedorPrincipal>
+
+    )
 }
 const ContenedorPrincipal = styled.div`
         position: relative;
@@ -152,7 +152,7 @@ const Boton = styled.button`
 	text-align: center;
 	position: absolute;
 	transition: .3s ease all;
-	 &:hover {
+	&:hover {
 		background: rgba{0,0,0,.2)}
 		path {
 			fill: #fff;

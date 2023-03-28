@@ -1,4 +1,6 @@
-import React, { useState } from "react";
+import axios from "axios";
+import React, { useEffect, useState } from "react";
+import { useNavigate, useOutletContext } from "react-router-dom";
 import Swal from "sweetalert2";
 import "./ContactUs.css";
 
@@ -7,6 +9,33 @@ const ContactUs = () => {
   const [fullName, setFullName] = useState("");
   const [email, setEmail] = useState("");
   const [message, setMessage] = useState("");
+
+  const { validarAdmin, usuario, setUsuario } = useOutletContext();
+
+  const navigate = useNavigate();
+
+  const token = localStorage.getItem("token");
+
+  useEffect(() => {
+    if (!token) {
+      navigate("/login");
+    } else {
+      axios
+        .get(`http://localhost:4000/user`, {
+          headers: {
+            acceso: token, // token
+          },
+        })
+        .then(({ data }) => {
+          setUsuario(data);
+          validarAdmin(data);
+          if (data.rol === "admin") {
+            navigate(`/admin`);
+          }
+        })
+        .catch((error) => console.error(error));
+    }
+  }, [token]);
 
   const emailSent = () => {
     Swal.fire(
