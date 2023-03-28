@@ -6,14 +6,7 @@ import Product from "../components/Product";
 import styles from "./styles.module.scss";
 
 const Welcome = () => {
-  const {
-    validarAdmin,
-    usuario,
-    setUsuario,
-    cartItem,
-    getProductos,
-    getProductosCarrito,
-  } = useOutletContext();
+  const { validarAdmin, usuario, setUsuario, cartItem, getProductos, getProductosCarrito } = useOutletContext();
 
   const navigate = useNavigate();
 

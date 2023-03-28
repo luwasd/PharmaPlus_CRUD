@@ -1,17 +1,13 @@
 import axios from "axios";
 import React, { useEffect, useState } from "react";
 import { useNavigate, useOutletContext } from "react-router-dom";
-import ProductosCart from "../components/ProductosCart";
 import styles from "./styles.module.scss";
 
 const ProfilePage = () => {
     const {
         validarAdmin,
         usuario,
-        setUsuario,
-        cartItem,
-        setCartItem,
-        deleteFromCart,
+        setUsuario
     } = useOutletContext();
     const { compras, nombre, correo, createdAt } = usuario;
     const [fecha, setFecha] = useState();
